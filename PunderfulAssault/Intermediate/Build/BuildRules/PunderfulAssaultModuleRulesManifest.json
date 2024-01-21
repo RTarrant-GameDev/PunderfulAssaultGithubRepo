@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"W:\\Game Dev\\GGJ 24\\PunderfulAssaultGithubRepo\\PunderfulAssault\\Source\\PunderfulAssault\\PunderfulAssault.Build.cs",
+		"W:\\Game Dev\\GGJ 24\\PunderfulAssaultGithubRepo\\PunderfulAssault\\Source\\PunderfulAssault.Target.cs",
+		"W:\\Game Dev\\GGJ 24\\PunderfulAssaultGithubRepo\\PunderfulAssault\\Source\\PunderfulAssaultEditor.Target.cs"
+	],
+	"EngineVersion": "5.3.2"
+}

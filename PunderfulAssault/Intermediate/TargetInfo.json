@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "PunderfulAssault",
+			"Path": "..\\Source\\PunderfulAssault.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "PunderfulAssaultEditor",
+			"Path": "..\\Source\\PunderfulAssaultEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

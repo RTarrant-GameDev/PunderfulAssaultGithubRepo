@@ -1,0 +1,29 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaultgamemode.cpp",
+        "ProvidedModule": "",
+        "PCH": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\punderfulassaulteditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\punderfulassault\\definitions.punderfulassault.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaultgamemode.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealeditor\\inc\\punderfulassault\\uht\\punderfulassaultgamemode.generated.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaultcharacter.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealeditor\\inc\\punderfulassault\\uht\\punderfulassaultcharacter.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
