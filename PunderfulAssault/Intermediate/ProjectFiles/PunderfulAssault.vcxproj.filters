@@ -84,17 +84,5 @@
     <ClInclude Include="..\..\Source\PunderfulAssault\TimerComponent.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\PunderfulAssault\TP_PickUpComponent.cpp">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\PunderfulAssault\TP_PickUpComponent.h">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\PunderfulAssault\TP_WeaponComponent.cpp">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\PunderfulAssault\TP_WeaponComponent.h">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

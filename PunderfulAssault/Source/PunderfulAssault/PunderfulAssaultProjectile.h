@@ -1,37 +1,44 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Components/SphereComponent.h"
 #include "PunderfulAssaultProjectile.generated.h"
 
-class USphereComponent;
-class UProjectileMovementComponent;
-
-UCLASS(config=Game)
-class APunderfulAssaultProjectile : public AActor
+UCLASS()
+class PUNDERFULASSAULT_API APunderfulAssaultProjectile : public AActor
 {
 	GENERATED_BODY()
-
-	/** Sphere collision component */
-	UPROPERTY(VisibleDefaultsOnly, Category=Projectile)
-	USphereComponent* CollisionComp;
-
-	/** Projectile movement component */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
-	UProjectileMovementComponent* ProjectileMovement;
-
-public:
+	
+public:	
+	// Sets default values for this actor's properties
 	APunderfulAssaultProjectile();
 
-	/** called when projectile hits something */
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
-	/** Returns CollisionComp subobject **/
-	USphereComponent* GetCollisionComp() const { return CollisionComp; }
-	/** Returns ProjectileMovement subobject **/
-	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(VisibleDefaultsOnly, Category="Projectile")
+	USphereComponent* CollisionComponent;
+
+	UPROPERTY(VisibleAnywhere, Category="Movement")
+	UProjectileMovementComponent* ProjectileMovementComponent;
+
+	// Projectile mesh
+	UPROPERTY(VisibleDefaultsOnly, Category = Projectile)
+	UStaticMeshComponent* ProjectileMeshComponent;
+
+	// Projectile material
+	UPROPERTY(VisibleDefaultsOnly, Category = Movement)
+	UMaterialInstanceDynamic* ProjectileMaterialInstance;
+
+	// Function that initializes the projectile's velocity in the shoot direction.
+	void FireInDirection(const FVector& ShootDirection);
 };
-

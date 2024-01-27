@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodePunderfulAssaultHUD() {}
 // Cross Module References
 	ENGINE_API UClass* Z_Construct_UClass_AHUD();
+	ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultHUD();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultHUD_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_PunderfulAssault();
@@ -28,6 +29,11 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultHUD() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrosshairTexture_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_CrosshairTexture;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
@@ -47,6 +53,22 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultHUD() {}
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
 #endif
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APunderfulAssaultHUD_Statics::NewProp_CrosshairTexture_MetaData[] = {
+		{ "Category", "PunderfulAssaultHUD" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// This will be drawn at the center of the screen.\n" },
+#endif
+		{ "ModuleRelativePath", "PunderfulAssaultHUD.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "This will be drawn at the center of the screen." },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APunderfulAssaultHUD_Statics::NewProp_CrosshairTexture = { "CrosshairTexture", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APunderfulAssaultHUD, CrosshairTexture), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultHUD_Statics::NewProp_CrosshairTexture_MetaData), Z_Construct_UClass_APunderfulAssaultHUD_Statics::NewProp_CrosshairTexture_MetaData) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APunderfulAssaultHUD_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultHUD_Statics::NewProp_CrosshairTexture,
+	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APunderfulAssaultHUD_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APunderfulAssaultHUD>::IsAbstract,
 	};
@@ -56,15 +78,16 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultHUD() {}
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
 		nullptr,
-		nullptr,
+		Z_Construct_UClass_APunderfulAssaultHUD_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
-		0,
+		UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultHUD_Statics::PropPointers),
 		0,
 		0x009002ACu,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultHUD_Statics::Class_MetaDataParams), Z_Construct_UClass_APunderfulAssaultHUD_Statics::Class_MetaDataParams)
 	};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultHUD_Statics::PropPointers) < 2048);
 	UClass* Z_Construct_UClass_APunderfulAssaultHUD()
 	{
 		if (!Z_Registration_Info_UClass_APunderfulAssaultHUD.OuterSingleton)
@@ -85,9 +108,9 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultHUD() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultHUD_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APunderfulAssaultHUD, APunderfulAssaultHUD::StaticClass, TEXT("APunderfulAssaultHUD"), &Z_Registration_Info_UClass_APunderfulAssaultHUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultHUD), 2853360700U) },
+		{ Z_Construct_UClass_APunderfulAssaultHUD, APunderfulAssaultHUD::StaticClass, TEXT("APunderfulAssaultHUD"), &Z_Registration_Info_UClass_APunderfulAssaultHUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultHUD), 3571552055U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultHUD_h_156147534(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultHUD_h_2772969319(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultHUD_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultHUD_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
