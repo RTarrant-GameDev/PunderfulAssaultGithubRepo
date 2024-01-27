@@ -43,6 +43,9 @@ APunderfulAssaultCharacter::APunderfulAssaultCharacter()
 
 	// Set any default properties of the audio component
 	AudioComponent->bAutoActivate = false;  // Do not play automatically, wait for Play() call
+
+	//Create HealthComponent component
+	HealthComponentClass = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 void APunderfulAssaultCharacter::BeginPlay()
@@ -58,6 +61,8 @@ void APunderfulAssaultCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	HealthComponentClass->SetMaxHP(10);
 
 }
 
@@ -121,6 +126,12 @@ void APunderfulAssaultCharacter::Fire()
 			}
 		}
 	}
+}
+
+float APunderfulAssaultCharacter::DisplayHP(int32 HPToDisplay)
+{
+	float HealthPercentage = static_cast<float>(HPToDisplay) / static_cast<float>(HealthComponentClass->maxHP);
+	return HealthPercentage;
 }
 
 

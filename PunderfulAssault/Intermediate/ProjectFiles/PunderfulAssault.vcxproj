@@ -121,6 +121,12 @@
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\PunderfulAssault\GameManager.h"/>
+    <ClCompile Include="..\..\Source\PunderfulAssault\HealthComponent.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\HealthComponent.h"/>
     <None Include="..\..\Source\PunderfulAssault\PunderfulAssault.Build.cs"/>
     <ClCompile Include="..\..\Source\PunderfulAssault\PunderfulAssault.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

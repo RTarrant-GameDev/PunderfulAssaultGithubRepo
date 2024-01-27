@@ -39,6 +39,12 @@
     <ClInclude Include="..\..\Source\PunderfulAssault\GameManager.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\HealthComponent.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\HealthComponent.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
     <None Include="..\..\Source\PunderfulAssault\PunderfulAssault.Build.cs">
       <Filter>Source\PunderfulAssault</Filter>
     </None>
