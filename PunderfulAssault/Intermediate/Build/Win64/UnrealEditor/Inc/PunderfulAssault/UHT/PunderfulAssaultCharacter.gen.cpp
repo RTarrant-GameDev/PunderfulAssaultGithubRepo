@@ -20,8 +20,17 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultCharacter();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultCharacter_NoRegister();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultProjectile_NoRegister();
+	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_PunderfulAssault();
 // End Cross Module References
+	DEFINE_FUNCTION(APunderfulAssaultCharacter::execDisplayHP)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_HPToDisplay);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(float*)Z_Param__Result=P_THIS->DisplayHP(Z_Param_HPToDisplay);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APunderfulAssaultCharacter::execFire)
 	{
 		P_FINISH;
@@ -33,9 +42,49 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	{
 		UClass* Class = APunderfulAssaultCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "DisplayHP", &APunderfulAssaultCharacter::execDisplayHP },
 			{ "Fire", &APunderfulAssaultCharacter::execFire },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics
+	{
+		struct PunderfulAssaultCharacter_eventDisplayHP_Parms
+		{
+			int32 HPToDisplay;
+			float ReturnValue;
+		};
+		static const UECodeGen_Private::FIntPropertyParams NewProp_HPToDisplay;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::NewProp_HPToDisplay = { "HPToDisplay", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PunderfulAssaultCharacter_eventDisplayHP_Parms, HPToDisplay), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PunderfulAssaultCharacter_eventDisplayHP_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::NewProp_HPToDisplay,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Gameplay" },
+		{ "ModuleRelativePath", "PunderfulAssaultCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APunderfulAssaultCharacter, nullptr, "DisplayHP", nullptr, nullptr, Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PropPointers), sizeof(Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PunderfulAssaultCharacter_eventDisplayHP_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::Function_MetaDataParams), Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::PunderfulAssaultCharacter_eventDisplayHP_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_APunderfulAssaultCharacter_Fire_Statics
 	{
@@ -113,6 +162,10 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MuzzleOffset_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_MuzzleOffset;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_HealthComponentClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_HealthComponentClass;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -123,6 +176,7 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultCharacter_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_APunderfulAssaultCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP, "DisplayHP" }, // 2161211309
 		{ &Z_Construct_UFunction_APunderfulAssaultCharacter_Fire, "Fire" }, // 1613423911
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultCharacter_Statics::FuncInfo) < 2048);
@@ -266,6 +320,14 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_MuzzleOffset = { "MuzzleOffset", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APunderfulAssaultCharacter, MuzzleOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_MuzzleOffset_MetaData), Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_MuzzleOffset_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_HealthComponentClass_MetaData[] = {
+		{ "Category", "Health" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "PunderfulAssaultCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_HealthComponentClass = { "HealthComponentClass", nullptr, (EPropertyFlags)0x001000000009000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APunderfulAssaultCharacter, HealthComponentClass), Z_Construct_UClass_UHealthComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_HealthComponentClass_MetaData), Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_HealthComponentClass_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APunderfulAssaultCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_Mesh1P,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_FirstPersonCameraComponent,
@@ -278,6 +340,7 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_JokesArray_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_JokesArray,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_MuzzleOffset,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APunderfulAssaultCharacter_Statics::NewProp_HealthComponentClass,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APunderfulAssaultCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APunderfulAssaultCharacter>::IsAbstract,
@@ -317,9 +380,9 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APunderfulAssaultCharacter, APunderfulAssaultCharacter::StaticClass, TEXT("APunderfulAssaultCharacter"), &Z_Registration_Info_UClass_APunderfulAssaultCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultCharacter), 2474188260U) },
+		{ Z_Construct_UClass_APunderfulAssaultCharacter, APunderfulAssaultCharacter::StaticClass, TEXT("APunderfulAssaultCharacter"), &Z_Registration_Info_UClass_APunderfulAssaultCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultCharacter), 1693232440U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_1248775685(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_1610805829(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

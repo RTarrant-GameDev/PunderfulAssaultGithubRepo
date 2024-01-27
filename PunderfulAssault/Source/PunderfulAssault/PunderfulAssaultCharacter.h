@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PunderfulAssaultProjectile.h"
+#include "HealthComponent.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Character.h"
 #include "Sound/SoundWave.h"
@@ -88,9 +89,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Gameplay")
 	void Fire();
 
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	float DisplayHP(int32 HPToDisplay);
+
 	// Gun muzzle offset from the camera location.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FVector MuzzleOffset;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Health")
+	class UHealthComponent* HealthComponentClass;
 
 private:
 	// Audio component for playing sound

@@ -8,7 +8,7 @@ UHealthComponent::UHealthComponent()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = false;
+	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
 }
@@ -28,17 +28,27 @@ void UHealthComponent::BeginPlay()
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
 }
 
 void UHealthComponent::SetHP(int32 HPAmountToSet)
 {
-	currHP += HPAmountToSet;
+	//Set to 0 to prevent going into negatives
+	if (currHP > 0) {
+		currHP += HPAmountToSet;
+	}
+	else if (currHP <= 0) {
+		currHP = 0;
+	}
+}
+
+void UHealthComponent::SetMaxHP(int32 MaxHPToSet)
+{
+	maxHP = MaxHPToSet;
+	currHP = maxHP;
 }
 
 int32 UHealthComponent::GetHP()
 {
-	return currHP);
+	return currHP;
 }
 

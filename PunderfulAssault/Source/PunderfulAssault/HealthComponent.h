@@ -33,6 +33,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void SetHP(int32 HPAmountToSet);
 
+	void SetMaxHP(int32 MaxHPToSet);
+
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	int32 GetHP();
 };
