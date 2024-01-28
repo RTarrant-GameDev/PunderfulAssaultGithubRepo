@@ -1,7 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "PunderfulAssaultCharacter.h"
-#include "PunderfulAssaultProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -10,6 +9,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include <Sound/SoundCue.h>
+#include <Kismet/GameplayStatics.h>
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -18,8 +19,6 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 APunderfulAssaultCharacter::APunderfulAssaultCharacter()
 {
-	// Character doesnt have a rifle at start
-	bHasRifle = false;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -39,6 +38,14 @@ APunderfulAssaultCharacter::APunderfulAssaultCharacter()
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
+	// Create the audio component
+	AudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("AudioComponent"));
+
+	// Set any default properties of the audio component
+	AudioComponent->bAutoActivate = false;  // Do not play automatically, wait for Play() call
+
+	//Create HealthComponent component
+	HealthComponentClass = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 void APunderfulAssaultCharacter::BeginPlay()
@@ -54,6 +61,8 @@ void APunderfulAssaultCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	HealthComponentClass->SetMaxHP(10);
 
 }
 
@@ -78,6 +87,51 @@ void APunderfulAssaultCharacter::SetupPlayerInputComponent(UInputComponent* Play
 	{
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input Component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
+}
+
+void APunderfulAssaultCharacter::Fire()
+{
+	// Attempt to fire a projectile.
+	if (ProjectileClass)
+	{
+		// Get the camera transform.
+		FVector CameraLocation;
+		FRotator CameraRotation;
+		GetActorEyesViewPoint(CameraLocation, CameraRotation);
+
+		// Set MuzzleOffset to spawn projectiles slightly in front of the camera.
+		MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+
+		// Transform MuzzleOffset from camera space to world space.
+		FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
+
+		// Skew the aim to be slightly upwards.
+		FRotator MuzzleRotation = CameraRotation;
+		MuzzleRotation.Pitch += 10.0f;
+
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = this;
+			SpawnParams.Instigator = GetInstigator();
+
+			// Spawn the projectile at the muzzle.
+			APunderfulAssaultProjectile* Projectile = World->SpawnActor<APunderfulAssaultProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+			if (Projectile)
+			{
+				// Set the projectile's initial trajectory.
+				FVector LaunchDirection = MuzzleRotation.Vector();
+				Projectile->FireInDirection(LaunchDirection);
+			}
+		}
+	}
+}
+
+float APunderfulAssaultCharacter::DisplayHP(int32 HPToDisplay)
+{
+	float HealthPercentage = static_cast<float>(HPToDisplay) / static_cast<float>(HealthComponentClass->maxHP);
+	return HealthPercentage;
 }
 
 
@@ -105,14 +159,4 @@ void APunderfulAssaultCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
-}
-
-void APunderfulAssaultCharacter::SetHasRifle(bool bNewHasRifle)
-{
-	bHasRifle = bNewHasRifle;
-}
-
-bool APunderfulAssaultCharacter::GetHasRifle()
-{
-	return bHasRifle;
 }

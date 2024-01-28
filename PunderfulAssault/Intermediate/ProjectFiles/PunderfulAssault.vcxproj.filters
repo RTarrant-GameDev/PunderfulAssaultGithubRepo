@@ -11,6 +11,7 @@
     <None Include="..\..\Source\PunderfulAssaultEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -32,6 +33,24 @@
     <Filter Include="Source\PunderfulAssault">
       <UniqueIdentifier>{6E9C8AEB-3C83-3FF8-96EF-F669DE50C99D}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\PunderfulAssault\Enemy.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\Enemy.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\GameManager.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\GameManager.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\HealthComponent.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\HealthComponent.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
     <None Include="..\..\Source\PunderfulAssault\PunderfulAssault.Build.cs">
       <Filter>Source\PunderfulAssault</Filter>
     </None>
@@ -53,6 +72,12 @@
     <ClInclude Include="..\..\Source\PunderfulAssault\PunderfulAssaultGameMode.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\PunderfulAssaultHUD.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\PunderfulAssaultHUD.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\PunderfulAssault\PunderfulAssaultPlayerController.cpp">
       <Filter>Source\PunderfulAssault</Filter>
     </ClCompile>
@@ -65,16 +90,10 @@
     <ClInclude Include="..\..\Source\PunderfulAssault\PunderfulAssaultProjectile.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\PunderfulAssault\TP_PickUpComponent.cpp">
+    <ClCompile Include="..\..\Source\PunderfulAssault\TimerComponent.cpp">
       <Filter>Source\PunderfulAssault</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Source\PunderfulAssault\TP_PickUpComponent.h">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\PunderfulAssault\TP_WeaponComponent.cpp">
-      <Filter>Source\PunderfulAssault</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\PunderfulAssault\TP_WeaponComponent.h">
+    <ClInclude Include="..\..\Source\PunderfulAssault\TimerComponent.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
   </ItemGroup>

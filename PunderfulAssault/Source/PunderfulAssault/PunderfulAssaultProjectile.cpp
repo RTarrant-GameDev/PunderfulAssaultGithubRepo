@@ -1,43 +1,77 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
+
 
 #include "PunderfulAssaultProjectile.h"
-#include "GameFramework/ProjectileMovementComponent.h"
-#include "Components/SphereComponent.h"
 
-APunderfulAssaultProjectile::APunderfulAssaultProjectile() 
+// Sets default values
+APunderfulAssaultProjectile::APunderfulAssaultProjectile()
 {
-	// Use a sphere as a simple collision representation
-	CollisionComp = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
-	CollisionComp->InitSphereRadius(5.0f);
-	CollisionComp->BodyInstance.SetCollisionProfileName("Projectile");
-	CollisionComp->OnComponentHit.AddDynamic(this, &APunderfulAssaultProjectile::OnHit);		// set up a notification for when this component hits something blocking
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
 
-	// Players can't walk on it
-	CollisionComp->SetWalkableSlopeOverride(FWalkableSlopeOverride(WalkableSlope_Unwalkable, 0.f));
-	CollisionComp->CanCharacterStepUpOn = ECB_No;
+	if (!RootComponent) {
+		RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("ProjectileSceneComponent"));
+	}
 
-	// Set as root component
-	RootComponent = CollisionComp;
+	if (!CollisionComponent) {
+		//Use sphere as simple collision representation
+		CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+		//Set collision radius
+		CollisionComponent->InitSphereRadius(25.0f);
+		//Set root component to be collision component
+		RootComponent = CollisionComponent;
+	}
 
-	// Use a ProjectileMovementComponent to govern this projectile's movement
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComp"));
-	ProjectileMovement->UpdatedComponent = CollisionComp;
-	ProjectileMovement->InitialSpeed = 3000.f;
-	ProjectileMovement->MaxSpeed = 3000.f;
-	ProjectileMovement->bRotationFollowsVelocity = true;
-	ProjectileMovement->bShouldBounce = true;
+	if (!ProjectileMovementComponent) {
+		// Use this component to drive this projectile's movement.
+		ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
+		ProjectileMovementComponent->SetUpdatedComponent(CollisionComponent);
+		ProjectileMovementComponent->InitialSpeed = 3000.0f;
+		ProjectileMovementComponent->MaxSpeed = 3000.0f;
+		ProjectileMovementComponent->bRotationFollowsVelocity = true;
+		ProjectileMovementComponent->bShouldBounce = true;
+		ProjectileMovementComponent->Bounciness = 0.3f;
+		ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
+	}
 
-	// Die after 3 seconds by default
+	if (!ProjectileMeshComponent)
+	{
+		ProjectileMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
+		static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("'/Game/Sphere.Sphere'"));
+		if (Mesh.Succeeded())
+		{
+			ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
+		}
+
+		static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/SphereMaterial.SphereMaterial'"));
+		if (Material.Succeeded())
+		{
+			ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
+		}
+		ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
+		ProjectileMeshComponent->SetRelativeScale3D(FVector(0.25f, 0.25f, 0.25f));
+		ProjectileMeshComponent->SetupAttachment(RootComponent);
+	}
+
+	// Delete the projectile after 3 seconds.
 	InitialLifeSpan = 3.0f;
 }
 
-void APunderfulAssaultProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+// Called when the game starts or when spawned
+void APunderfulAssaultProjectile::BeginPlay()
 {
-	// Only add impulse and destroy projectile if we hit a physics
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
-	{
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+	Super::BeginPlay();
+	
+}
 
-		Destroy();
-	}
+// Called every frame
+void APunderfulAssaultProjectile::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+void APunderfulAssaultProjectile::FireInDirection(const FVector& ShootDirection)
+{
+	ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
 }
