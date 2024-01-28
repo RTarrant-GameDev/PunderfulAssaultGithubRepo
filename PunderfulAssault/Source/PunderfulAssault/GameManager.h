@@ -25,6 +25,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
 	FTimerHandle CountdownTimerHandle;
 
 	UPROPERTY(EditAnywhere, Category = "Time")

@@ -6,10 +6,12 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "PunderfulAssault/GameManager.h"
+#include "../../Source/Runtime/Engine/Classes/Engine/TimerHandle.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeGameManager() {}
 // Cross Module References
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_AGameManager();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_AGameManager_NoRegister();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_UTimerComponent_NoRegister();
@@ -131,6 +133,10 @@ void EmptyLinkFunctionForGeneratedCodeGameManager() {}
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CountdownTimerHandle_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_CountdownTimerHandle;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TimerValue_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_TimerValue;
@@ -167,6 +173,13 @@ void EmptyLinkFunctionForGeneratedCodeGameManager() {}
 	};
 #endif
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGameManager_Statics::NewProp_CountdownTimerHandle_MetaData[] = {
+		{ "Category", "Timer" },
+		{ "ModuleRelativePath", "GameManager.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AGameManager_Statics::NewProp_CountdownTimerHandle = { "CountdownTimerHandle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGameManager, CountdownTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AGameManager_Statics::NewProp_CountdownTimerHandle_MetaData), Z_Construct_UClass_AGameManager_Statics::NewProp_CountdownTimerHandle_MetaData) }; // 3999327403
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGameManager_Statics::NewProp_TimerValue_MetaData[] = {
 		{ "Category", "Time" },
 		{ "ModuleRelativePath", "GameManager.h" },
@@ -196,6 +209,7 @@ void EmptyLinkFunctionForGeneratedCodeGameManager() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGameManager_Statics::NewProp_TimerComponentClass = { "TimerComponentClass", nullptr, (EPropertyFlags)0x001000000009000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGameManager, TimerComponentClass), Z_Construct_UClass_UTimerComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AGameManager_Statics::NewProp_TimerComponentClass_MetaData), Z_Construct_UClass_AGameManager_Statics::NewProp_TimerComponentClass_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGameManager_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGameManager_Statics::NewProp_CountdownTimerHandle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGameManager_Statics::NewProp_TimerValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGameManager_Statics::NewProp_EnemiesInLevel,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGameManager_Statics::NewProp_EnemiesMadeToLaugh,
@@ -239,9 +253,9 @@ void EmptyLinkFunctionForGeneratedCodeGameManager() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_GameManager_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AGameManager, AGameManager::StaticClass, TEXT("AGameManager"), &Z_Registration_Info_UClass_AGameManager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGameManager), 2795595517U) },
+		{ Z_Construct_UClass_AGameManager, AGameManager::StaticClass, TEXT("AGameManager"), &Z_Registration_Info_UClass_AGameManager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGameManager), 3369143532U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_GameManager_h_514457693(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_GameManager_h_1958520208(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_GameManager_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_GameManager_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
