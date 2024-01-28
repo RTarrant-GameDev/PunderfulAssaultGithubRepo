@@ -1,0 +1,31 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaulthud.cpp",
+        "ProvidedModule": "",
+        "PCH": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\punderfulassault\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\unrealgame\\development\\punderfulassault\\definitions.punderfulassault.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaulthud.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\hud.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\hudhitbox.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\debugtextinfo.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\debugtextinfo.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\hud.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\canvas.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\canvasitem.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\font.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\fontimportoptions.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\fontimportoptions.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\slatecore\\public\\fonts\\fontproviderinterface.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\slatecore\\uht\\fontproviderinterface.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\font.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\canvastypes.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\canvastypes.generated.h",
+            "g:\\epic games\\games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\canvas.generated.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealgame\\inc\\punderfulassault\\uht\\punderfulassaulthud.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
