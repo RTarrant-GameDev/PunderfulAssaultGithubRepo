@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "TimerComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameManager.generated.h"
 
 UCLASS()
@@ -29,11 +30,20 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Time")
 	float TimerValue;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemies")
+	int32 EnemiesInLevel;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemies")
+	int32 EnemiesMadeToLaugh;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Timer")
 	class UTimerComponent* TimerComponentClass;
 
 	UFUNCTION(BlueprintCallable, Category = "Gameplay")
 	FString DisplayTimeToTimer(float TimeToDisplay);
+
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	FString DisplayEnemies(int EnemyCount);
 
 	void CountdownTimer();
 };
