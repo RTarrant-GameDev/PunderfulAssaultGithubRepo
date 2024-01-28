@@ -2,6 +2,7 @@
 
 
 #include "GameManager.h"
+#include "Enemy.h"
 
 // Sets default values
 AGameManager::AGameManager()
@@ -12,6 +13,7 @@ AGameManager::AGameManager()
 	//Create TimerComponent component
 	TimerComponentClass = CreateDefaultSubobject<UTimerComponent>(TEXT("TimerComponent"));
 
+	
 }
 
 // Called when the game starts or when spawned
@@ -23,6 +25,10 @@ void AGameManager::BeginPlay()
 
 	GetWorldTimerManager().SetTimer(CountdownTimerHandle, this, &AGameManager::CountdownTimer, 1.0f, true);
 
+	TArray<AActor*> EnemiesFound;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemy::StaticClass(), EnemiesFound);
+
+	EnemiesInLevel = EnemiesFound.Num();
 }
 
 // Called every frame
@@ -44,6 +50,13 @@ FString AGameManager::DisplayTimeToTimer(float TimeToDisplay)
 
 	return MMSS;
 
+}
+
+FString AGameManager::DisplayEnemies(int EnemyCount)
+{
+	FString EnemyString = FString::Printf(TEXT("%01d/%01d"), EnemyCount, EnemiesInLevel);
+
+	return EnemyString;
 }
 
 void AGameManager::CountdownTimer()
