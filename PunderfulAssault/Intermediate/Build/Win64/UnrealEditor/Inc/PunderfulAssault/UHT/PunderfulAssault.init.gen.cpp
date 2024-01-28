@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssault_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x2513D878,
-				0x1B0AEC10,
+				0xC32CD947,
+				0xC0372EED,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_PunderfulAssault.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_PunderfulAssault.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_PunderfulAssault(Z_Construct_UPackage__Script_PunderfulAssault, TEXT("/Script/PunderfulAssault"), Z_Registration_Info_UPackage__Script_PunderfulAssault, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x2513D878, 0x1B0AEC10));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_PunderfulAssault(Z_Construct_UPackage__Script_PunderfulAssault, TEXT("/Script/PunderfulAssault"), Z_Registration_Info_UPackage__Script_PunderfulAssault, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xC32CD947, 0xC0372EED));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
