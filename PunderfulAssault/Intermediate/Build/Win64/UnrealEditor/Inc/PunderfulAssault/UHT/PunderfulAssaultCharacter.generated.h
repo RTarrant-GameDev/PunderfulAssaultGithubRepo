@@ -9,6 +9,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class USoundWave;
 #ifdef PUNDERFULASSAULT_PunderfulAssaultCharacter_generated_h
 #error "PunderfulAssaultCharacter.generated.h already included, missing '#pragma once' in PunderfulAssaultCharacter.h"
 #endif
@@ -19,6 +20,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_26_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execLoadAudioSynchronously); \
 	DECLARE_FUNCTION(execDisplayHP); \
 	DECLARE_FUNCTION(execFire);
 
