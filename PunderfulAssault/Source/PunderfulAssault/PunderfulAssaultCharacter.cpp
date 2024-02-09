@@ -134,6 +134,13 @@ float APunderfulAssaultCharacter::DisplayHP(int32 HPToDisplay)
 	return HealthPercentage;
 }
 
+USoundWave* APunderfulAssaultCharacter::LoadAudioSynchronously()
+{
+	USoundWave* LoadedSoundWave = JokesArray[rand() % 5].LoadSynchronous();
+
+	return LoadedSoundWave;
+}
+
 
 void APunderfulAssaultCharacter::Move(const FInputActionValue& Value)
 {
