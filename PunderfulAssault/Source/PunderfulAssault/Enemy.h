@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/Character.h"
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
 
@@ -30,4 +31,26 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere)
+    float FiringRange;
+
+    UPROPERTY(EditAnywhere)
+    float FireRate;
+
+
+protected:
+	// Projectile class to spawn.
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+	TSubclassOf<class APunderfulAssaultProjectile> ProjectileClass;
+
+public:
+	UFUNCTION(BlueprintCallable, Category="Gameplay")
+	void Fire();
+
+private:
+	ACharacter* PlayerCharacter;
+	float TimeSinceLastFire;
+	bool bCanFire;
+
+	void ResetFireCooldown();
 };
