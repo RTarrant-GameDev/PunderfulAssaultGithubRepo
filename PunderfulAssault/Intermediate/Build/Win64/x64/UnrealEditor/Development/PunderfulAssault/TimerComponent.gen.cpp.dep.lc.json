@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealeditor\\inc\\punderfulassault\\uht\\timercomponent.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\punderfulassaulteditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\punderfulassault\\definitions.punderfulassault.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\timercomponent.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealeditor\\inc\\punderfulassault\\uht\\timercomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

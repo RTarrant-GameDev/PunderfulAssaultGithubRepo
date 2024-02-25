@@ -118,8 +118,10 @@ void APunderfulAssaultCharacter::Fire()
 
 			// Spawn the projectile at the muzzle.
 			APunderfulAssaultProjectile* Projectile = World->SpawnActor<APunderfulAssaultProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+			
 			if (Projectile)
 			{
+				Projectile->SetProjectileType("Player");
 				// Set the projectile's initial trajectory.
 				FVector LaunchDirection = MuzzleRotation.Vector();
 				Projectile->FireInDirection(LaunchDirection);
@@ -131,6 +133,7 @@ void APunderfulAssaultCharacter::Fire()
 float APunderfulAssaultCharacter::DisplayHP(int32 HPToDisplay)
 {
 	float HealthPercentage = static_cast<float>(HPToDisplay) / static_cast<float>(HealthComponentClass->maxHP);
+	//UE_LOG(LogTemp, Warning, TEXT("%f percent HP"), HPToDisplay);
 	return HealthPercentage;
 }
 

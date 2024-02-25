@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/Character.h"
+#include "PunderfulAssaultProjectile.h"
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
 
@@ -30,4 +32,34 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere)
+    float FiringRange;
+
+    UPROPERTY(EditAnywhere)
+    float FireRate;
+
+	UPROPERTY(EditAnywhere)
+	float DistanceToPlayer;
+
+
+protected:
+	// Projectile class to spawn.
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+	TSubclassOf<class APunderfulAssaultProjectile> ProjectileClass;
+
+public:
+	UFUNCTION(BlueprintCallable, Category="Gameplay")
+	void Fire();
+
+	UPROPERTY(EditAnywhere)
+	float DistanceToSpawnProjectile;
+
+private:
+	ACharacter* PlayerCharacter;
+	FTimerHandle TimerHandle_FireCooldown; // Declare TimerHandle variable
+
+	float TimeSinceLastFire;
+	bool bCanFire;
+
+	void ResetFireCooldown(); //Reset fire cooldown
 };
