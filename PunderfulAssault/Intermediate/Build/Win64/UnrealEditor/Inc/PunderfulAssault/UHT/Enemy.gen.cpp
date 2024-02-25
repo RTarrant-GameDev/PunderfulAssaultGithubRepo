@@ -85,9 +85,17 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_FireRate;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DistanceToPlayer_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanceToPlayer;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[];
 #endif
 		static const UECodeGen_Private::FClassPropertyParams NewProp_ProjectileClass;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DistanceToSpawnProjectile_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanceToSpawnProjectile;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -141,6 +149,13 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_FireRate = { "FireRate", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, FireRate), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_FireRate_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_FireRate_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "ModuleRelativePath", "Enemy.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer = { "DistanceToPlayer", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, DistanceToPlayer), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass_MetaData[] = {
 		{ "Category", "Projectile" },
 #if !UE_BUILD_SHIPPING
@@ -153,12 +168,21 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	};
 #endif
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0024080000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, ProjectileClass), Z_Construct_UClass_UClass, Z_Construct_UClass_APunderfulAssaultProjectile_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "ModuleRelativePath", "Enemy.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile = { "DistanceToSpawnProjectile", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, DistanceToSpawnProjectile), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponentClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_FiringRange,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_FireRate,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AEnemy_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AEnemy>::IsAbstract,
@@ -198,9 +222,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy, AEnemy::StaticClass, TEXT("AEnemy"), &Z_Registration_Info_UClass_AEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy), 1326066007U) },
+		{ Z_Construct_UClass_AEnemy, AEnemy::StaticClass, TEXT("AEnemy"), &Z_Registration_Info_UClass_AEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy), 113537292U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_1243849525(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_2309137707(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

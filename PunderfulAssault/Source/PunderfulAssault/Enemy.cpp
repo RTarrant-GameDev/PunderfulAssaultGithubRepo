@@ -38,7 +38,7 @@ void AEnemy::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	// Calculate distance to player
-	float DistanceToPlayer = FVector::Distance(GetActorLocation(), PlayerCharacter->GetActorLocation());
+	DistanceToPlayer = FVector::Distance(GetActorLocation(), PlayerCharacter->GetActorLocation());
 
 	if (DistanceToPlayer <= FiringRange && bCanFire)
 	{
@@ -48,19 +48,30 @@ void AEnemy::Tick(float DeltaTime)
 	if (HealthComponentClass->GetHP() <= 0) {
 		MadeToLaugh = true;
 	}
+
+	if (MadeToLaugh) 
+	{
+		bCanFire = false;
+	}
 }
 
 void AEnemy::Fire()
 {
-	// Attempt to fire a projectile.
+//	// Attempt to fire a projectile.
 	if (ProjectileClass)
 	{
+		// Calculate offset to spawn projectile away from the enemy
+		FVector Offset = GetActorForwardVector() * DistanceToSpawnProjectile;
+
+
 		FVector SpawnLocation = GetActorLocation();
 		FRotator SpawnRotation = GetActorRotation();
 		APunderfulAssaultProjectile* Projectile = GetWorld()->SpawnActor<APunderfulAssaultProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 		
+
 		if (Projectile)
 		{
+			Projectile->SetProjectileType("Enemy");
 			// Set the projectile's initial trajectory.
 			FVector LaunchDirection = (PlayerCharacter->GetActorLocation() - SpawnLocation).GetSafeNormal();
 			Projectile->FireInDirection(LaunchDirection);
