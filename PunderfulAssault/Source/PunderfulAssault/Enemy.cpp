@@ -2,6 +2,7 @@
 
 
 #include "Enemy.h"
+#include "DrawDebugHelpers.h"
 #include <Kismet/GameplayStatics.h>
 
 // Sets default values
@@ -12,6 +13,9 @@ AEnemy::AEnemy()
 
 	//Create HealthComponent component
 	HealthComponentClass = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	////Create EnemyAIController component
+	//EnemyAIControllerClass = CreateDefaultSubobject<AEnemyAIController>(TEXT("EnemyAIController"));
 
 	// Set default values
 	FiringRange = 100.0f;
@@ -37,14 +41,37 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(this, 0);
+
 	// Calculate distance to player
 	DistanceToPlayer = FVector::Distance(GetActorLocation(), PlayerCharacter->GetActorLocation());
 
-	if (DistanceToPlayer <= FiringRange && bCanFire)
+	// Perform line trace to check if any obstacles are present between enemy and player
+	FHitResult HitResult;
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this); //Ignore enemy itself
+
+	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, GetActorLocation(), PlayerCharacter->GetActorLocation(), ECollisionChannel::ECC_Visibility, Params);
+
+	// Draw debug line
+	if (bHit)
 	{
-		Fire();
+		DrawDebugLine(GetWorld(), GetActorLocation(), HitResult.ImpactPoint, FColor::Red, false, 0.1f, 0, 5);
+	}
+	else
+	{
+		DrawDebugLine(GetWorld(), GetActorLocation(), PlayerCharacter->GetActorLocation(), FColor::Green, false, 0.1f, 0, 5);
 	}
 
+	// Check if line trace hit something
+	if (bHit && DistanceToPlayer <= FiringRange && bCanFire)
+	{
+		if (HitResult.GetActor() == PlayerPawn)
+		{
+			Fire();
+		}
+	}
+	
 	if (HealthComponentClass->GetHP() <= 0) {
 		MadeToLaugh = true;
 	}

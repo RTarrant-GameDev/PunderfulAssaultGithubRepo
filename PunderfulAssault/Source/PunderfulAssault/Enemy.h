@@ -9,6 +9,9 @@
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
 
+/**
+ *
+ */
 UCLASS()
 class PUNDERFULASSAULT_API AEnemy : public AActor
 {
