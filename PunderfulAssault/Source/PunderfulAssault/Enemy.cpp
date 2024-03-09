@@ -41,8 +41,6 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(this, 0);
-
 	// Calculate distance to player
 	DistanceToPlayer = FVector::Distance(GetActorLocation(), PlayerCharacter->GetActorLocation());
 
@@ -51,24 +49,21 @@ void AEnemy::Tick(float DeltaTime)
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(this); //Ignore enemy itself
 
-	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, GetActorLocation(), PlayerCharacter->GetActorLocation(), ECollisionChannel::ECC_Visibility, Params);
+	if (!MadeToLaugh)
+	{
+		bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, GetActorLocation(), PlayerCharacter->GetActorLocation(), ECollisionChannel::ECC_Visibility, Params);
 
-	// Draw debug line
-	if (bHit)
-	{
-		DrawDebugLine(GetWorld(), GetActorLocation(), HitResult.ImpactPoint, FColor::Red, false, 0.1f, 0, 5);
-	}
-	else
-	{
-		DrawDebugLine(GetWorld(), GetActorLocation(), PlayerCharacter->GetActorLocation(), FColor::Green, false, 0.1f, 0, 5);
-	}
-
-	// Check if line trace hit something
-	if (bHit && DistanceToPlayer <= FiringRange && bCanFire)
-	{
-		if (HitResult.GetActor() == PlayerPawn)
+		// Check if line trace hit something
+		if (bHit)
 		{
-			Fire();
+			if (HitResult.GetActor() == PlayerCharacter)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Line trace hit player"));
+				if (DistanceToPlayer <= FiringRange && bCanFire)
+				{
+					Fire();
+				}
+			}
 		}
 	}
 	

@@ -57,12 +57,14 @@ public:
 	UPROPERTY(EditAnywhere)
 	float DistanceToSpawnProjectile;
 
+	UPROPERTY(VisibleAnywhere)
+	bool bCanFire;
+
 private:
 	ACharacter* PlayerCharacter;
 	FTimerHandle TimerHandle_FireCooldown; // Declare TimerHandle variable
 
 	float TimeSinceLastFire;
-	bool bCanFire;
 
 	void ResetFireCooldown(); //Reset fire cooldown
 };
