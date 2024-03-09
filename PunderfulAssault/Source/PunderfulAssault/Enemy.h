@@ -9,6 +9,9 @@
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
 
+/**
+ *
+ */
 UCLASS()
 class PUNDERFULASSAULT_API AEnemy : public AActor
 {
@@ -54,12 +57,14 @@ public:
 	UPROPERTY(EditAnywhere)
 	float DistanceToSpawnProjectile;
 
+	UPROPERTY(VisibleAnywhere)
+	bool bCanFire;
+
 private:
 	ACharacter* PlayerCharacter;
 	FTimerHandle TimerHandle_FireCooldown; // Declare TimerHandle variable
 
 	float TimeSinceLastFire;
-	bool bCanFire;
 
 	void ResetFireCooldown(); //Reset fire cooldown
 };

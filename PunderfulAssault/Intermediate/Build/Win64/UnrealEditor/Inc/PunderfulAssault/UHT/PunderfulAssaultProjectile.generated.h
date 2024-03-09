@@ -9,9 +9,6 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class AActor;
-class UPrimitiveComponent;
-struct FHitResult;
 #ifdef PUNDERFULASSAULT_PunderfulAssaultProjectile_generated_h
 #error "PunderfulAssaultProjectile.generated.h already included, missing '#pragma once' in PunderfulAssaultProjectile.h"
 #endif
@@ -23,8 +20,7 @@ struct FHitResult;
 #define FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultProjectile_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execGetProjectileType); \
-	DECLARE_FUNCTION(execSetProjectileType); \
-	DECLARE_FUNCTION(execOnHit);
+	DECLARE_FUNCTION(execSetProjectileType);
 
 
 #define FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultProjectile_h_14_ACCESSORS

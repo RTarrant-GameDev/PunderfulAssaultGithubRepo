@@ -2,6 +2,7 @@
 
 
 #include "Enemy.h"
+#include "DrawDebugHelpers.h"
 #include <Kismet/GameplayStatics.h>
 
 // Sets default values
@@ -12,6 +13,9 @@ AEnemy::AEnemy()
 
 	//Create HealthComponent component
 	HealthComponentClass = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	////Create EnemyAIController component
+	//EnemyAIControllerClass = CreateDefaultSubobject<AEnemyAIController>(TEXT("EnemyAIController"));
 
 	// Set default values
 	FiringRange = 100.0f;
@@ -40,11 +44,29 @@ void AEnemy::Tick(float DeltaTime)
 	// Calculate distance to player
 	DistanceToPlayer = FVector::Distance(GetActorLocation(), PlayerCharacter->GetActorLocation());
 
-	if (DistanceToPlayer <= FiringRange && bCanFire)
-	{
-		Fire();
-	}
+	// Perform line trace to check if any obstacles are present between enemy and player
+	FHitResult HitResult;
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this); //Ignore enemy itself
 
+	if (!MadeToLaugh)
+	{
+		bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, GetActorLocation(), PlayerCharacter->GetActorLocation(), ECollisionChannel::ECC_Visibility, Params);
+
+		// Check if line trace hit something
+		if (bHit)
+		{
+			if (HitResult.GetActor() == PlayerCharacter)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Line trace hit player"));
+				if (DistanceToPlayer <= FiringRange && bCanFire)
+				{
+					Fire();
+				}
+			}
+		}
+	}
+	
 	if (HealthComponentClass->GetHP() <= 0) {
 		MadeToLaugh = true;
 	}
