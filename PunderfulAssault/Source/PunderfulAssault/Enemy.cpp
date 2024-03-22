@@ -56,10 +56,10 @@ void AEnemy::Tick(float DeltaTime)
 		// Check if line trace hit something
 		if (bHit)
 		{
-			if (HitResult.GetActor() == PlayerCharacter)
+			if (HitResult.GetActor() == PlayerCharacter && DistanceToPlayer <= VisibilityRange)
 			{
 				UE_LOG(LogTemp, Warning, TEXT("Line trace hit player"));
-				if (DistanceToPlayer <= FiringRange && bCanFire)
+				if (ConfirmShootingRange() && bCanFire)
 				{
 					Fire();
 				}
@@ -74,6 +74,25 @@ void AEnemy::Tick(float DeltaTime)
 	if (MadeToLaugh) 
 	{
 		bCanFire = false;
+	}
+}
+
+void AEnemy::DetectPlayer()
+{
+}
+
+void AEnemy::MoveTowardsPlayer()
+{
+}
+
+bool AEnemy::ConfirmShootingRange()
+{
+	if (DistanceToPlayer <= FiringRange) 
+	{
+		return true;
+	}
+	else {
+		return false;
 	}
 }
 

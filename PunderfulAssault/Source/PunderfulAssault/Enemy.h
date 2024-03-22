@@ -36,6 +36,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
+	float VisibilityRange;
+
+	UPROPERTY(EditAnywhere)
     float FiringRange;
 
     UPROPERTY(EditAnywhere)
@@ -51,7 +54,9 @@ protected:
 	TSubclassOf<class APunderfulAssaultProjectile> ProjectileClass;
 
 public:
-	UFUNCTION(BlueprintCallable, Category="Gameplay")
+	void DetectPlayer();
+	void MoveTowardsPlayer();
+	bool ConfirmShootingRange();
 	void Fire();
 
 	UPROPERTY(EditAnywhere)

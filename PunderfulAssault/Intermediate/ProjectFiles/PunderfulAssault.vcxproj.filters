@@ -39,6 +39,12 @@
     <ClInclude Include="..\..\Source\PunderfulAssault\Enemy.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\EnemyAIController.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\EnemyAIController.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\PunderfulAssault\GameManager.cpp">
       <Filter>Source\PunderfulAssault</Filter>
     </ClCompile>
