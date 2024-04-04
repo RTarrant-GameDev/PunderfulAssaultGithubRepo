@@ -2,6 +2,7 @@
 
 
 #include "Enemy.h"
+#include "EnemyAIController.h"
 #include "DrawDebugHelpers.h"
 #include <Kismet/GameplayStatics.h>
 
@@ -13,9 +14,6 @@ AEnemy::AEnemy()
 
 	//Create HealthComponent component
 	HealthComponentClass = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
-
-	////Create EnemyAIController component
-	//EnemyAIControllerClass = CreateDefaultSubobject<AEnemyAIController>(TEXT("EnemyAIController"));
 
 	// Set default values
 	FiringRange = 100.0f;
@@ -30,6 +28,9 @@ void AEnemy::BeginPlay()
 	Super::BeginPlay();
 	
 	HealthComponentClass->SetMaxHP(1);
+
+	controllerName = GetController()->GetName();
+	enemyController = Cast<AEnemyAIController>(GetController());
 
 	// Get a reference to the player character
 	// You may need to implement your own logic for finding the player character
@@ -57,8 +58,8 @@ void AEnemy::Tick(float DeltaTime)
 		if (bHit)
 		{
 			if (HitResult.GetActor() == PlayerCharacter && DistanceToPlayer <= VisibilityRange)
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Line trace hit player"));
+			{	
+				enemyController->TestFunct();
 				if (ConfirmShootingRange() && bCanFire)
 				{
 					Fire();
@@ -75,14 +76,6 @@ void AEnemy::Tick(float DeltaTime)
 	{
 		bCanFire = false;
 	}
-}
-
-void AEnemy::DetectPlayer()
-{
-}
-
-void AEnemy::MoveTowardsPlayer()
-{
 }
 
 bool AEnemy::ConfirmShootingRange()
