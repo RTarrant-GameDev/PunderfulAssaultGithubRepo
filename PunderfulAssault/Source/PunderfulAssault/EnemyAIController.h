@@ -15,12 +15,5 @@ class PUNDERFULASSAULT_API AEnemyAIController : public AAIController
 	GENERATED_BODY()
 	
 public:
-	virtual void Tick(float DeltaTime) override;
-
-protected:
-	UPROPERTY(EditAnywhere, Category="Sight")
-	float SightRange = 1000.0f;
-
-	// Function to detect player
-	bool CanSeePlayer() const;
+	void TestFunct();
 };

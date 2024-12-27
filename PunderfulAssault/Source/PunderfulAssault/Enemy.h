@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "GameFramework/Pawn.h"
 #include "GameFramework/Character.h"
+#include "EnemyAIController.h"
 #include "PunderfulAssaultProjectile.h"
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
@@ -13,7 +14,7 @@
  *
  */
 UCLASS()
-class PUNDERFULASSAULT_API AEnemy : public AActor
+class PUNDERFULASSAULT_API AEnemy : public APawn
 {
 	GENERATED_BODY()
 	
@@ -36,6 +37,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
+	float VisibilityRange;
+
+	UPROPERTY(EditAnywhere)
     float FiringRange;
 
     UPROPERTY(EditAnywhere)
@@ -44,6 +48,11 @@ public:
 	UPROPERTY(EditAnywhere)
 	float DistanceToPlayer;
 
+	UPROPERTY(VisibleAnywhere)
+	FString controllerName;
+
+	UPROPERTY(VisibleAnywhere)
+	AEnemyAIController* enemyController;
 
 protected:
 	// Projectile class to spawn.
@@ -51,7 +60,7 @@ protected:
 	TSubclassOf<class APunderfulAssaultProjectile> ProjectileClass;
 
 public:
-	UFUNCTION(BlueprintCallable, Category="Gameplay")
+	bool ConfirmShootingRange();
 	void Fire();
 
 	UPROPERTY(EditAnywhere)

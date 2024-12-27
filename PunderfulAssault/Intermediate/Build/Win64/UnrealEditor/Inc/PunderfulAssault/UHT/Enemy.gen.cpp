@@ -10,50 +10,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 // Cross Module References
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
-	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_AEnemy();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_AEnemy_NoRegister();
+	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_AEnemyAIController_NoRegister();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_APunderfulAssaultProjectile_NoRegister();
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_PunderfulAssault();
 // End Cross Module References
-	DEFINE_FUNCTION(AEnemy::execFire)
-	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		P_THIS->Fire();
-		P_NATIVE_END;
-	}
 	void AEnemy::StaticRegisterNativesAEnemy()
 	{
-		UClass* Class = AEnemy::StaticClass();
-		static const FNameNativePtrPair Funcs[] = {
-			{ "Fire", &AEnemy::execFire },
-		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
-	}
-	struct Z_Construct_UFunction_AEnemy_Fire_Statics
-	{
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UECodeGen_Private::FFunctionParams FuncParams;
-	};
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_Fire_Statics::Function_MetaDataParams[] = {
-		{ "Category", "Gameplay" },
-		{ "ModuleRelativePath", "Enemy.h" },
-	};
-#endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_Fire_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy, nullptr, "Fire", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_Fire_Statics::Function_MetaDataParams), Z_Construct_UFunction_AEnemy_Fire_Statics::Function_MetaDataParams) };
-	UFunction* Z_Construct_UFunction_AEnemy_Fire()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AEnemy_Fire_Statics::FuncParams);
-		}
-		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AEnemy);
 	UClass* Z_Construct_UClass_AEnemy_NoRegister()
@@ -63,7 +29,6 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	struct Z_Construct_UClass_AEnemy_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
-		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -77,6 +42,10 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 		static void NewProp_MadeToLaugh_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_MadeToLaugh;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_VisibilityRange_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_VisibilityRange;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FiringRange_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_FiringRange;
@@ -88,6 +57,14 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_DistanceToPlayer_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanceToPlayer;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_controllerName_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_controllerName;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_enemyController_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_enemyController;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[];
 #endif
@@ -106,19 +83,16 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
 	UObject* (*const Z_Construct_UClass_AEnemy_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_AActor,
+		(UObject* (*)())Z_Construct_UClass_APawn,
 		(UObject* (*)())Z_Construct_UPackage__Script_PunderfulAssault,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::DependentSingletons) < 16);
-	const FClassFunctionLinkInfo Z_Construct_UClass_AEnemy_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AEnemy_Fire, "Fire" }, // 2257638887
-	};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n *\n */" },
 #endif
+		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "Enemy.h" },
 		{ "ModuleRelativePath", "Enemy.h" },
 	};
@@ -143,6 +117,13 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh = { "MadeToLaugh", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AEnemy), &Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_VisibilityRange_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "ModuleRelativePath", "Enemy.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_VisibilityRange = { "VisibilityRange", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, VisibilityRange), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_VisibilityRange_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_VisibilityRange_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_FiringRange_MetaData[] = {
 		{ "Category", "Enemy" },
 		{ "ModuleRelativePath", "Enemy.h" },
@@ -163,6 +144,20 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer = { "DistanceToPlayer", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, DistanceToPlayer), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_controllerName_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "ModuleRelativePath", "Enemy.h" },
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_controllerName = { "controllerName", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, controllerName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_controllerName_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_controllerName_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_enemyController_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "ModuleRelativePath", "Enemy.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_enemyController = { "enemyController", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AEnemy, enemyController), Z_Construct_UClass_AEnemyAIController_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_enemyController_MetaData), Z_Construct_UClass_AEnemy_Statics::NewProp_enemyController_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass_MetaData[] = {
 		{ "Category", "Projectile" },
@@ -197,9 +192,12 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponentClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_MadeToLaugh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_VisibilityRange,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_FiringRange,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_FireRate,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToPlayer,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_controllerName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_enemyController,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_ProjectileClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_DistanceToSpawnProjectile,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_bCanFire,
@@ -209,14 +207,14 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	};
 	const UECodeGen_Private::FClassParams Z_Construct_UClass_AEnemy_Statics::ClassParams = {
 		&AEnemy::StaticClass,
-		"Engine",
+		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		FuncInfo,
+		nullptr,
 		Z_Construct_UClass_AEnemy_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		UE_ARRAY_COUNT(FuncInfo),
+		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::PropPointers),
 		0,
 		0x009000A4u,
@@ -242,9 +240,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy, AEnemy::StaticClass, TEXT("AEnemy"), &Z_Registration_Info_UClass_AEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy), 3292260467U) },
+		{ Z_Construct_UClass_AEnemy, AEnemy::StaticClass, TEXT("AEnemy"), &Z_Registration_Info_UClass_AEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy), 145683768U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_930989228(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_2763621041(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_Enemy_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
