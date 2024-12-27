@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealgame\\inc\\punderfulassault\\uht\\punderfulassaultplayercontroller.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\punderfulassault\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\x64\\unrealgame\\development\\punderfulassault\\definitions.punderfulassault.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\source\\punderfulassault\\punderfulassaultplayercontroller.h",
+            "w:\\game dev\\ggj 24\\punderfulassaultgithubrepo\\punderfulassault\\intermediate\\build\\win64\\unrealgame\\inc\\punderfulassault\\uht\\punderfulassaultplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
