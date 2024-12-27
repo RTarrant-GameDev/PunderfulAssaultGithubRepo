@@ -3,12 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
+#include "EnemyAIController.h"
+#include "PunderfulAssaultProjectile.h"
 #include "HealthComponent.h"
 #include "Enemy.generated.h"
 
+/**
+ *
+ */
 UCLASS()
-class PUNDERFULASSAULT_API AEnemy : public AActor
+class PUNDERFULASSAULT_API AEnemy : public APawn
 {
 	GENERATED_BODY()
 	
@@ -30,4 +36,44 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere)
+	float VisibilityRange;
+
+	UPROPERTY(EditAnywhere)
+    float FiringRange;
+
+    UPROPERTY(EditAnywhere)
+    float FireRate;
+
+	UPROPERTY(EditAnywhere)
+	float DistanceToPlayer;
+
+	UPROPERTY(VisibleAnywhere)
+	FString controllerName;
+
+	UPROPERTY(VisibleAnywhere)
+	AEnemyAIController* enemyController;
+
+protected:
+	// Projectile class to spawn.
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+	TSubclassOf<class APunderfulAssaultProjectile> ProjectileClass;
+
+public:
+	bool ConfirmShootingRange();
+	void Fire();
+
+	UPROPERTY(EditAnywhere)
+	float DistanceToSpawnProjectile;
+
+	UPROPERTY(VisibleAnywhere)
+	bool bCanFire;
+
+private:
+	ACharacter* PlayerCharacter;
+	FTimerHandle TimerHandle_FireCooldown; // Declare TimerHandle variable
+
+	float TimeSinceLastFire;
+
+	void ResetFireCooldown(); //Reset fire cooldown
 };

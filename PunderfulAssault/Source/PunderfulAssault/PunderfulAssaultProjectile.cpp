@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "Kismet/GameplayStatics.h"
 #include "PunderfulAssaultProjectile.h"
 
 // Sets default values
@@ -75,3 +76,14 @@ void APunderfulAssaultProjectile::FireInDirection(const FVector& ShootDirection)
 {
 	ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
 }
+
+void APunderfulAssaultProjectile::SetProjectileType(FString TypeValue)
+{
+	ProjectileType = FString(TypeValue);
+}
+
+FString APunderfulAssaultProjectile::GetProjectileType()
+{
+	return ProjectileType;
+}
+

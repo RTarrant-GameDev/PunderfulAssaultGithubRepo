@@ -23,6 +23,13 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	PUNDERFULASSAULT_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_PunderfulAssault();
 // End Cross Module References
+	DEFINE_FUNCTION(APunderfulAssaultCharacter::execLoadAudioSynchronously)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USoundWave**)Z_Param__Result=P_THIS->LoadAudioSynchronously();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APunderfulAssaultCharacter::execDisplayHP)
 	{
 		P_GET_PROPERTY(FIntProperty,Z_Param_HPToDisplay);
@@ -44,6 +51,7 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "DisplayHP", &APunderfulAssaultCharacter::execDisplayHP },
 			{ "Fire", &APunderfulAssaultCharacter::execFire },
+			{ "LoadAudioSynchronously", &APunderfulAssaultCharacter::execLoadAudioSynchronously },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -106,6 +114,41 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APunderfulAssaultCharacter_Fire_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics
+	{
+		struct PunderfulAssaultCharacter_eventLoadAudioSynchronously_Parms
+		{
+			USoundWave* ReturnValue;
+		};
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PunderfulAssaultCharacter_eventLoadAudioSynchronously_Parms, ReturnValue), Z_Construct_UClass_USoundWave_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Audio" },
+		{ "ModuleRelativePath", "PunderfulAssaultCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APunderfulAssaultCharacter, nullptr, "LoadAudioSynchronously", nullptr, nullptr, Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PropPointers), sizeof(Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PunderfulAssaultCharacter_eventLoadAudioSynchronously_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::Function_MetaDataParams), Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::PunderfulAssaultCharacter_eventLoadAudioSynchronously_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -182,6 +225,7 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_APunderfulAssaultCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_APunderfulAssaultCharacter_DisplayHP, "DisplayHP" }, // 2161211309
 		{ &Z_Construct_UFunction_APunderfulAssaultCharacter_Fire, "Fire" }, // 1613423911
+		{ &Z_Construct_UFunction_APunderfulAssaultCharacter_LoadAudioSynchronously, "LoadAudioSynchronously" }, // 1351130430
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APunderfulAssaultCharacter_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -399,9 +443,9 @@ void EmptyLinkFunctionForGeneratedCodePunderfulAssaultCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APunderfulAssaultCharacter, APunderfulAssaultCharacter::StaticClass, TEXT("APunderfulAssaultCharacter"), &Z_Registration_Info_UClass_APunderfulAssaultCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultCharacter), 1504098298U) },
+		{ Z_Construct_UClass_APunderfulAssaultCharacter, APunderfulAssaultCharacter::StaticClass, TEXT("APunderfulAssaultCharacter"), &Z_Registration_Info_UClass_APunderfulAssaultCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APunderfulAssaultCharacter), 1410503939U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_1883486891(TEXT("/Script/PunderfulAssault"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_1591871222(TEXT("/Script/PunderfulAssault"),
 		Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PunderfulAssault_Source_PunderfulAssault_PunderfulAssaultCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

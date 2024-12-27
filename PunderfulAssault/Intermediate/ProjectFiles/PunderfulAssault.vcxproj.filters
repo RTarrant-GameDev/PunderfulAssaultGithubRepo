@@ -33,10 +33,22 @@
     <Filter Include="Source\PunderfulAssault">
       <UniqueIdentifier>{6E9C8AEB-3C83-3FF8-96EF-F669DE50C99D}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\PunderfulAssault\BTTask_DetectPlayer.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\BTTask_DetectPlayer.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\PunderfulAssault\Enemy.cpp">
       <Filter>Source\PunderfulAssault</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\PunderfulAssault\Enemy.h">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PunderfulAssault\EnemyAIController.cpp">
+      <Filter>Source\PunderfulAssault</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PunderfulAssault\EnemyAIController.h">
       <Filter>Source\PunderfulAssault</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\PunderfulAssault\GameManager.cpp">

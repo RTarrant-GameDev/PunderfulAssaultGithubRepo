@@ -103,6 +103,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Health")
 	class UHealthComponent* HealthComponentClass;
 
+	UFUNCTION(BlueprintCallable, Category = "Audio")
+	USoundWave* LoadAudioSynchronously();
+
 private:
 	// Audio component for playing sound
 	UAudioComponent* AudioComponent;
